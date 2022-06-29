@@ -1,20 +1,19 @@
-import * as tokenService from './tokenService'
-const BASE_URL = '/api/auth/'
+import * as tokenService from './tokenService.js'
+const BASE_URL = 'http://localhost:3003/api/auth/'
 
 function signup(user) {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
-    headers: new Headers({ 'Content-Type': 'application/json' }),
+    headers: new Headers({'Content-Type': 'application/json'}),
     body: JSON.stringify(user),
-  })
-  .then(res => {
+  }).then(res => {
     return res.json()
-  })
-  .then(({ token }) => tokenService.setToken(token)) 
+  }).then(res => console.log(res))
+  .then(({ token }) => tokenService.setToken(token))
   .catch(err => {
     console.log(err)
   })
-}
+};
 
 function getUser() {
   return tokenService.getUserFromToken()
@@ -25,6 +24,7 @@ function logout() {
 }
 
 function login(credentials) {
+  console.log("AuthService LOGIN")
   return fetch(`${BASE_URL}/login`, {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json'}),

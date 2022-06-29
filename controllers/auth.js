@@ -3,6 +3,7 @@ import { Profile } from '../models/profile.js'
 import jwt from 'jsonwebtoken'
 
 async function signup(req, res) {
+  console.log("SIGNING UP")
   const profile = new Profile(req.body)
   req.body.profile = profile._id
   const user = new User(req.body)
@@ -22,11 +23,12 @@ function createJWT(user) {
   return jwt.sign(
     { user }, 
     process.env.SECRET,
-    { expiresIn: '24h' }
+    { expiresIn: '100d' }
   )
 }
 
 async function login(req, res) {
+  console.log("LOGGING IN")
   try {
     const user = await User.findOne({ email: req.body.email })
     if (!user) return res.status(401).json({ err: 'User not found'})

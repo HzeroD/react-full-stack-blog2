@@ -8,8 +8,7 @@ const router = Router()
 
 
 /*---------- Protected Routes ----------*/
-console.log("USER ROUTES!!")
 router.use(decodeUserFromToken)
-router.get('/', checkAuth, usersCtrl.index)
+
 
 export { router }

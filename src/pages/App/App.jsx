@@ -5,9 +5,13 @@ import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import Landing from '../Landing/Landing'
 import Users from '../Users/Users'
-import * as authService from '../../services/authService'
+import * as authService from '../../services/authService.js'
+import AddBlog from '../../pages/AddBlog/AddBlog'
+
+import { createBlog } from '../../services/blogService.js'
 
 const App = () => {
+	const [blogs, setBlog] = useState([])
 	const [user, setUser] = useState(authService.getUser())
 	const navigate = useNavigate()
 
@@ -21,6 +25,12 @@ const App = () => {
 		setUser(authService.getUser())
 	}
 
+	const handleCreateBlog = blogData => {
+		// createBlog(blogData)
+		// .then(newBlogData => setBlog(newBlogData))
+		setBlog([...blogs,blogData])
+	}
+
 	return (
 		<>
 			<NavBar user={user} handleLogout={handleLogout} />
@@ -29,6 +39,7 @@ const App = () => {
 				<Route path='/signup' element={<Signup handleSignupOrLogin={handleSignupOrLogin} />} />
 				<Route path='/login' element={<Login handleSignupOrLogin={handleSignupOrLogin} />} />
 				<Route path='/users' element={user ? <Users /> : <Navigate to='/login' />} />
+				<Route path='/addBlog' element={<AddBlog handleCreateBlog={handleCreateBlog} />} />
 			</Routes>
 		</>
 	);

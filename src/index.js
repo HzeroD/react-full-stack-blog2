@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client'
 import './index.css';
-import App from './pages/App/App';
+import App from './pages/App/App.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = ReactDOMClient.createRoot(container)
+root.render(
   <React.StrictMode>
     <Router>
       <Routes>
@@ -12,5 +15,5 @@ ReactDOM.render(
       </Routes>
     </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  
 );

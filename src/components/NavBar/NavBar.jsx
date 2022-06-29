@@ -12,6 +12,9 @@ const NavBar = ({ user, handleLogout }) => {
 								Welcome, {user.name}
 							</li>
 							<li>
+								<Link to="/addBlog">New Blog</Link>
+							</li>
+							<li>
                 <Link to="/users">Users</Link>
               </li>
 							<li>

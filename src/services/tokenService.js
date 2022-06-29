@@ -1,9 +1,11 @@
 function setToken(token) {
+  token = JSON.stringify(token)
   localStorage.setItem('token', token)
 }
 
 function getToken() {
   let token = localStorage.getItem('token')
+  console.log("TOKEN", token)
   if (token) {
     const payload = JSON.parse(atob(token.split('.')[1]))
     if (payload.exp < Date.now() / 1000) {
