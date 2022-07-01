@@ -15,11 +15,15 @@ const NavBar = ({ user, handleLogout }) => {
 								<Link to="/addBlog">New Blog</Link>
 							</li>
 							<li>
+								<Link to='/blogs' >Blogs</Link>
+							</li>
+							<li>
                 <Link to="/users">Users</Link>
               </li>
 							<li>
 								<Link to='' onClick={handleLogout}>LOG OUT</Link>
 							</li>
+							
 						</ul>
 					</div>
 				</nav>

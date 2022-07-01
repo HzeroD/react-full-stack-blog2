@@ -22,6 +22,7 @@ function getUserFromToken() {
 }
 
 function removeToken() {
+  console.log("REMOVE TOKEN LOGOUT")
   localStorage.removeItem('token')
 }
 

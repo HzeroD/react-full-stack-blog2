@@ -27,6 +27,11 @@ function AddBlog(props) {
         }
       }
 
+      const handleDeleteblog = () => {
+        // make API call to delete blog
+        // update state to reflect deleted blog
+      }
+
       const { title, content } = formData
   
       const isFormInvalid = () => {

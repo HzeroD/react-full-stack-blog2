@@ -1,8 +1,8 @@
 import * as tokenService from './tokenService.js'
-const BASE_URL = 'http://localhost:3003/api/auth/'
+const BASE_URL = "http://localhost:3003"
 
 function signup(user) {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL}/api/auth/signup`, {
     method: 'POST',
     headers: new Headers({'Content-Type': 'application/json'}),
     body: JSON.stringify(user),
@@ -20,12 +20,13 @@ function getUser() {
 }
 
 function logout() {
+  console.log("LOGOUT FUNCTION")
   tokenService.removeToken()
 }
 
 function login(credentials) {
   console.log("AuthService LOGIN")
-  return fetch(`${BASE_URL}/login`, {
+  return fetch(`${BASE_URL}/api/auth/login`, {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json'}),
     body: JSON.stringify(credentials)
